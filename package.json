@@ -1,0 +1,32 @@
+{
+  "name": "react-todo-list",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@vitejs/plugin-react": "^1.3.0",
+    "vite": "^2.9.9"
+  },
+  "description": "Todo list made with React",
+  "main": "src/index.jsx",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlosandf/react-todo-list.git"
+  },
+  "author": "Carlos Florez <carlos.andresff2912@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/carlosandf/react-todo-list/issues"
+  },
+  "homepage": "https://github.com/carlosandf/react-todo-list#readme"
+}
