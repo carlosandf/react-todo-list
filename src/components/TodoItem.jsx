@@ -1,8 +1,12 @@
 import React from 'react';
 
-function TodoItem() {
+function TodoItem({ text }) {
   return(
-    <h2>TodoItem</h2>
+    <li>
+      <span>C</span>
+      <p>{text}</p>
+      <span>X</span>
+    </li>
   )
 }
-export default TodoItem;
+export { TodoItem };

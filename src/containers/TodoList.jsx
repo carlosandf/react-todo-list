@@ -1,8 +1,12 @@
 import React from 'react';
 
-function TodoList() {
+function TodoList({ children }) {
   return(
-    <h2>TodoList</h2>
+    <section>
+      <ul>
+        {children}
+      </ul>
+    </section>
   )
 }
-export default TodoList;
+export { TodoList };
