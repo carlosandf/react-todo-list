@@ -1,8 +1,9 @@
 import React from 'react';
+import '@styles/TodoList.css';
 
 function TodoList({ children }) {
   return(
-    <section>
+    <section className="TodoList">
       <ul>
         {children}
       </ul>

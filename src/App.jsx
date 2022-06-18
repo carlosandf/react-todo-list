@@ -21,12 +21,11 @@ function App() {
       <TodoList>
         {
           todos.map(item => (
-            <TodoItem key={item.text} text={item.text} />
+            <TodoItem completed={item.completed} key={item.text} text={item.text} />
           ))
         }
       </TodoList>
       <CreateTodoButton />
-      
     </Fragment>
   )
 }

@@ -14,4 +14,13 @@ export default defineConfig({
   plugins: [
     react(),
   ],
+
+  /* CSS Options */
+  // css: {
+  //   preprocessorOptions: {
+  //     scss: {
+  //       additionalData: `$injectedColor: orange;`
+  //     },
+  //   }
+  // }
 })
