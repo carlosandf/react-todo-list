@@ -1,19 +1,11 @@
 import '@styles/TodoItem.css';
 
-function TodoItem({ text, completed }) {
-  const onComplete = () => {
-
-    alert('Ya Completaste la tarea: ' + text )
-  }
-  const onDelete = (e) => {
-    console.log(e.target)
-    e.target.parentNode.remove()
-  }
+function TodoItem({ text, completed, onComplete, onDelete}) {
   
   return(
     <li className='TodoItem'>
       <i
-        onClick={e => onComplete(e)}
+        onClick={onComplete}
         className={`fa-solid fa-check Icon Icon-check ${completed && 'Icon-check--active'}`}
       />
       <p className={`TodoItem-p ${completed && 'TodoItem-p--complete'}`}>
