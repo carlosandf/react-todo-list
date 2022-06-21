@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import useLocalStorage from '@hooks/useLocalStorage';
+import { useLocalStorage } from '@hooks/useLocalStorage';
 import { AppUi } from './AppUi';
 
 // const defaultTodos = [
@@ -53,7 +53,7 @@ function App() {
 
   return (
     <React.StrictMode>
-      <p>{patitos}</p>
+      {/* <p>{patitos}</p> */}
       <AppUi
         totalTodos={totalTodos}
         completedTodos={completedTodos}
