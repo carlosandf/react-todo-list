@@ -4,8 +4,11 @@ import { TodoSearch } from '@components/TodoSearch';
 import { TodoList } from '@containers/TodoList';
 import { TodoItem } from '@components/TodoItem';
 import { CreateTodoButton } from '@components/CreateTodoButton';
+import { Message } from '@components/Message';
 
 function AppUi({
+  error,
+  loading,
   totalTodos, 
   completedTodos,
   searchValue,
@@ -26,6 +29,13 @@ function AppUi({
         setSearchValue={setSearchValue}
       />
       <TodoList>
+        {error && <Message text='Hubo un error inesperado, intenta otra vez' />}
+        {loading && <Message text='Carrgardo...' />}
+
+        {
+          (!loading && !searchedTodos.length) && <Message text='Agrega tu primera tarea a la lista' />
+        }
+
         {
           searchedTodos.map(item => (
             <TodoItem 

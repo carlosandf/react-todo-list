@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocalStorage } from '@hooks/useLocalStorage';
 import { AppUi } from './AppUi';
 
@@ -10,11 +10,14 @@ import { AppUi } from './AppUi';
 
 const versionTodos = 'TODOS_V1';
 
-
 function App() {
 
-  const [todos, saveTodos] = useLocalStorage(versionTodos, []);
-  const [patitos, savePatitos] = useLocalStorage('PATOS_V2', 'FERNANDO');
+  const {
+    element: todos,
+    saveElement: saveTodos,
+    loading,
+    error
+  } = useLocalStorage(versionTodos, []);
 
   const [searchValue, setSearchValue] = useState('');
 
@@ -53,8 +56,9 @@ function App() {
 
   return (
     <React.StrictMode>
-      {/* <p>{patitos}</p> */}
       <AppUi
+        error={error}
+        loading={loading}
         totalTodos={totalTodos}
         completedTodos={completedTodos}
         searchValue={searchValue}
