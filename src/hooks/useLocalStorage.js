@@ -24,7 +24,7 @@ function useLocalStorage(elementName, initialValue) {
         setError(true)
       }
     }, 1500);
-  });
+  }, []);
   
   const saveElement = (newElement) => {
     try {

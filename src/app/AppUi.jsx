@@ -1,41 +1,48 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
+import { TodoContext } from "@context/TodoContext";
 import { TodoCounter } from '@components/TodoCounter';
 import { TodoSearch } from '@components/TodoSearch';
 import { TodoList } from '@containers/TodoList';
 import { TodoItem } from '@components/TodoItem';
 import { CreateTodoButton } from '@components/CreateTodoButton';
 import { Message } from '@components/Message';
+import { Modal } from '@components/Modal';
+import { CreateTodoForm } from '@components/CreateTodoForm';
+import { TodosLoading } from "@components/TodosLoading";
 
-function AppUi({
-  error,
-  loading,
-  totalTodos, 
-  completedTodos,
-  searchValue,
-  setSearchValue,
-  searchedTodos,
-  completeTodo,
-  deleteTodo
-}) {
+function AppUi() {
+  const {
+    error,
+    loading,
+    searchedTodos,
+    completeTodo,
+    deleteTodo,
+    searchValue,
+    openModal,
+    setOpenModal,
+  } = useContext(TodoContext);
 
   return (
     <Fragment>
-      <TodoCounter 
-        total={totalTodos}
-        completed={completedTodos}
-      />
-      <TodoSearch 
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-      />
+      <TodoCounter/>
+      <TodoSearch/>
       <TodoList>
+
         {error && <Message text='Hubo un error inesperado, intenta otra vez' />}
-        {loading && <Message text='Carrgardo...' />}
+        
+        {loading && <TodosLoading />}
 
         {
-          (!loading && !searchedTodos.length) && <Message text='Agrega tu primera tarea a la lista' />
+          (!loading && !searchedTodos.length && searchValue) && 
+            (
+              <Message text='Esa tarea  no existe' />
+            )
         }
 
+        {(!loading && !searchedTodos.length && !searchValue) && (
+          <Message text='Agrega tu primera tarea a la lista' />
+        )}
+        
         {
           searchedTodos.map(item => (
             <TodoItem 
@@ -48,7 +55,17 @@ function AppUi({
           ))
         }
       </TodoList>
-      <CreateTodoButton />
+
+      {openModal && ( 
+        <Modal>
+          <CreateTodoForm />
+        </Modal>
+      )}
+
+      <CreateTodoButton 
+        setOpenModal={setOpenModal}
+        openModal={openModal}
+      />
     </Fragment>
   )
 }
